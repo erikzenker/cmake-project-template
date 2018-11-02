@@ -14,6 +14,7 @@ target_link_libraries(MyLibraryTests
         PRIVATE
           MyCompany::MyLibrary
           GTest::Main
+          GTest::GTest
 )
 add_test(NAME MyLibrary.UnitTests
         COMMAND MyLibraryTests

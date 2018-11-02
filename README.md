@@ -1,4 +1,6 @@
 # C++ Cmake Project Template
+[![Build Status](https://travis-ci.org/erikzenker/cmake-project-template.svg?branch=conan)](https://travis-ci.org/erikzenker/cmake-project-template)
+=
 This is a template for c++ cmake projects. You can clone or copy it as a foundation for your new c++ cmake project. 
 
 * The [master](https://github.com/erikzenker/cmake-project-template/tree/master) branch contains the foundation for all other branches. 
@@ -7,20 +9,22 @@ This is a template for c++ cmake projects. You can clone or copy it as a foundat
 The template is based on the [talk from Mateusz Pusz at the CppCon 2018](https://www.youtube.com/watch?v=S4QSKLXdTtA). It is organized in the following directory tree:
 ``` 
 ├── CMakeLists.txt (1)
-├── LICENSE (2)
-├── README.md (3)
-├── src (4)
-│   ├── CMakeLists.txt (5)
-│   ├── include (6)
-│   │   └── MyLibrary (7)
-│   │       └── lib_header.h (8)
-│   ├── lib_source.cpp (9)
-│   └── lib_source.h (10)
-└── test (11)
-    ├── CMakeLists.txt (12)
-    └── tests_source.cpp (13)
+├── conanfile.txt (2)
+├── LICENSE (3)
+├── README.md (4)
+├── src (5)
+│   ├── CMakeLists.txt (6)
+│   ├── include (7)
+│   │   └── MyLibrary (8)
+│   │       └── lib_header.h (9)
+│   ├── lib_source.cpp (10)
+│   └── lib_source.h (11)
+└── test (12)
+    ├── CMakeLists.txt (13)
+    └── tests_source.cpp (14)
 ```
 1. Simple project wrapper and entry point for developement e.g.: CLion project
+2. Conan file for the conan package manager, which contains the project dependency information
 2. License file (here MIT)
 3. Readme file describing the project(currently this file)
 4. Contains all source code files of your library
@@ -38,6 +42,7 @@ The template is based on the [talk from Mateusz Pusz at the CppCon 2018](https:/
 ``` bash
 mkdir src/build
 cd src/build
+conan install ..
 cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/tmp/
 cmake --build . --target install
 ```
@@ -46,6 +51,7 @@ cmake --build . --target install
 ``` bash
 mkdir test/build/
 cd test/build/
+conan install ..
 cmake .. -DCMAkE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/tmp/
 cmake --build . --target MyLibraryTests
 ctest -VV

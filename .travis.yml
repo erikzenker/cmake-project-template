@@ -7,12 +7,18 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - cmake
-      - lcov
       - g++-7
-      - boost1.67
-      - libgtest-dev
+      - python3-pip
 compiler:
   - gcc
+install:
+  - sudo pip3 install virtualenv
+  - mkdir env
+  - virtualenv env
+  - source env/bin/activate
+  - curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+  - sudo python3.4 get-pip.py
+  - sudo pip install conan
 os:
   - linux
 script:
@@ -20,6 +26,7 @@ script:
   - export CC=gcc-7
   - mkdir build && cd build
   - mkdir install
+  - conan install ..
   - cmake .. -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=install
   - cmake --build . --target install
-  - ./test/MyLibraryTests
+  - ctest -VV
