@@ -1,6 +1,5 @@
 # C++ Cmake Project Template
-This is a template for c++ cmake projects. You can clone or copy it as a foundation for your new 
-c++ cmake project. 
+This is a template for c++ cmake projects. You can clone or copy it as a foundation for your new c++ cmake project. 
 
 * The [master](https://github.com/erikzenker/cmake-project-template/tree/master) branch contains the foundation for all other branches. 
 * The [conan](https://github.com/erikzenker/cmake-project-template/tree/conan) branch extends the master by introducing the conan package manager. 
